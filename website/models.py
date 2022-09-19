@@ -29,3 +29,15 @@ class RegularCommission(models.Model):
 
     def __str__(self):
         return self.email
+
+class ReferenceSheetCommission(models.Model):
+    """contact form for users to request reference sheet commisions"""
+    character_reference = models.CharField(max_length=100)
+    character_owner = models.CharField(max_length=100)
+    design_changes = models.CharField(max_length=100)
+    add_ons = models.CharField(max_length=100)
+    other_info = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+
+    def __str__(self):
+        return self.email
