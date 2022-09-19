@@ -61,3 +61,109 @@ class UpdateCommentView(UpdateView):
     template_name = 'update_comment.html'
     fields = ('name', 'body')
     success_url = '/gallery/'
+
+
+class DeleteCommentView(DeleteView):
+    """creates the DeleteCommentView view on gallery.html"""
+    model = Comment
+    template_name = 'delete_comment.html'
+    fields = ('name', 'body')
+    success_url = ('/gallery/')
+
+
+def commission_view(request):
+    """creates the commission_view view on commsiions.html
+    and renders all commission forms
+    """
+    if request.method == 'POST':
+        regular_form = RegularCommissionForm(request.POST)
+        if regular_form.is_valid():
+            regular_form.save()
+            subject = request.POST.get('subject', 'New Regular Commission')
+            character_reference = request.POST.get('character_reference', '')
+            character_owner = request.POST.get('character_owner', '')
+            commission_type = request.POST.get('commission_type', '')
+            type_option = request.POST.get('type_option', '')
+            character_personality = request.POST.get('character_personality',
+                                                     '')
+            pose = request.POST.get('pose', '')
+            other_info = request.POST.get('other_info', '')
+            email = request.POST.get('email', '')
+            message_list = {'character_reference': character_reference,
+                            'character_owner': character_owner,
+                            'commission_type': commission_type,
+                            'type_option': type_option,
+                            'character_personality': character_personality,
+                            'pose': pose,
+                            'other_info': other_info,
+                            'email': email}
+            message = pprint.pformat(message_list, sort_dicts=False)
+
+            try:
+                send_mail(subject, message, 'huemann49@gmail.com',
+                          ['huemann49@gmail.com'])
+            except BadHeaderError:
+                return HttpResponse('Invalid header found.')
+            return render(request, 'commissions_success.html')
+
+    reference_form = ReferenceSheetForm(request.POST)
+    if reference_form.is_valid():
+        reference_form.save()
+        subject = request.POST.get('subject', 'Reference Sheet Commission')
+        character_reference = request.POST.get('character_reference', '')
+        character_owner = request.POST.get('character_owner', '')
+        design_changes = request.POST.get('design_changes', '')
+        add_ons = request.POST.get('add_ons', '')
+        other_info = request.POST.get('other_info', '')
+        email = request.POST.get('email', '')
+        message_list = {'character_reference': character_reference,
+                        'character_owner': character_owner,
+                        'design_changes': design_changes,
+                        'add_ons': add_ons,
+                        'other_info': other_info,
+                        'email': email}
+        message = pprint.pformat(message_list, sort_dicts=False)
+
+        try:
+            send_mail(subject, message, 'huemann49@gmail.com',
+                      ['huemann49@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return render(request, 'commissions_success.html')
+
+    custom_form = CustomForm(request.POST)
+    if custom_form.is_valid():
+        custom_form.save()
+        subject = request.POST.get('subject', 'Custom Commission')
+        theme = request.POST.get('theme', '')
+        colours = request.POST.get('colours', '')
+        traits = request.POST.get('traits', '')
+        gender = request.POST.get('gender', '')
+        breed = request.POST.get('breed', '')
+        accessories = request.POST.get('accessories', '')
+        other_info = request.POST.get('other_info', '')
+        email = request.POST.get('email', '')
+        message_list = {'theme': theme,
+                        'colours': colours,
+                        'traits': traits,
+                        'gender': gender,
+                        'breed': breed,
+                        'accessories': accessories,
+                        'other_info': other_info,
+                        'email': email}
+        message = pprint.pformat(message_list, sort_dicts=False)
+
+        try:
+            send_mail(subject, message, 'huemann49@gmail.com',
+                      ['huemann49@gmail.com'])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return render(request, 'commissions_success.html')
+
+    custom_form = CustomForm()
+    regular_form = RegularCommissionForm()
+    reference_form = ReferenceSheetForm()
+    context = {'reference_form': reference_form,
+               'regular_form': regular_form,
+               'custom_form': custom_form}
+    return render(request, 'commissions.html', context)
