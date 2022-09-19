@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% load cloudinary %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container pink-border">
+    <div class="row">
+        <div class="col-sm-6 gallery-art-display ">
+            {% for picture in pictures %}
+            {% if forloop.counter|divisibleby:2 %}
+            <h1>{{picture.title}}</h1>
+            
+            <img src="{{ picture.featured_image.url }}">
+            {% if user.is_authenticated %}
+            <a href="{% url 'add_comment' picture.pk %}">Add a comment</a>
+            {% endif %}
+            
+        </div>
+        <div class="col-sm-6 gallery-art-display">
+            {% else %}
+            <h1>{{picture.title}}</h1>
+            <img src="{{ picture.featured_image.url }}">
+            {% if user.is_authenticated %}
+            <a href="{% url 'add_comment' picture.pk %}">Add a comment</a>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+<div class="container blue-border" id="comments-section">
+    <h2>Comments</h2>
+    <div class="row">
+        <div class="col-sm-6">
+            
+            {% for comment in comments %}
+            {% if forloop.counter|divisibleby:2 %}
+            <br>
+            <strong>
+                {{ comment.author}} -
+                {{ comment.date_added}}
+                <br>
+                <h4>Artwork name: {{ comment.post.title}}</h4>
+                <br>
+                <h5>Title: {{ comment.name}}</h5>
+            </strong>
+            <br>
+            {{ comment.body}}
+            <br>
+            <br>
+            {% if request.user == comment.author %}
+            <a href="{% url 'update_comment' comment.pk %}">Edit your comment</a> 
+            <br>
+            <a href="{% url 'delete_comment' comment.pk %}">Delete your comment</a> 
+            {% endif %}
+            <br>
+            <br>
+        </div>
+
+        <div class="col-sm-6">
+            {% else %}
+            
+                {{ comment.author}} -
+                {{ comment.date_added}}
+                <br>
+                <h4>Artwork name: {{ comment.post.title}}</h4>
+                <br>
+                <h5>Title: {{ comment.name}}</h5>
+            </strong>
+            <br>
+            {{ comment.body}}
+            </strong>
+            <br>
+            <br>
+            {% if request.user == comment.author %}
+            <a href="{% url 'update_comment' comment.pk %}">Edit your comments</a> 
+            <br>
+            <a href="{% url 'delete_comment' comment.pk %}">Delete your comments</a> 
+            {% endif %}
+            <br>
+            <br>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}
