@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-# from .views import AddCommentView, UpdateCommentView, DeleteCommentView
+from .views import AddCommentView, UpdateCommentView, DeleteCommentView
 
 urlpatterns = [
     path('', views.index, name='index'),
