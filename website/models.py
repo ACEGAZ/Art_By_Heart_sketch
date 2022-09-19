@@ -57,3 +57,18 @@ class CustomCommissions(models.Model):
 
     def __str__(self):
         return self.email
+
+
+class Comment(models.Model):
+    """comment model for autharised users to comment on artwork
+    on gallery page"""
+    post = models.ForeignKey(AddArt, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    body = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+    status = models.IntegerField(choices=STATUS, default=0),
+    ordering = ["created_on"]
+
+    def __str__(self):
+        return f"Comment {self.name} {self.body}"
