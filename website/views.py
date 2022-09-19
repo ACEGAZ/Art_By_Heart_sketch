@@ -25,3 +25,20 @@ def upload_art_view(request):
     upload_art_form = UploadArt()
     context = {'upload_art_form': upload_art_form}
     return render(request, 'admin_upload_art.html', context)
+
+
+def display_artwork(request):
+    """renders display_artwork forms to gallery.html"""
+    pictures = AddArt.objects.all()
+    comments = Comment.objects.all()
+    context = {'pictures': pictures,
+               'comments': comments}
+    return render(request, 'gallery.html', context)
+
+
+class AddCommentView(CreateView):
+    """creates the AddCommentView view on gallery.html"""
+    model = Comment
+    template_name = 'add_comment.html'
+    fields = ('name', 'body')
+    success_url = '/add_comment_success/'
