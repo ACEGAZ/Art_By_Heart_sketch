@@ -27,3 +27,11 @@ class CustomForm(ModelForm):
         """creates all fields for CustomForm """
         model = CustomCommissions
         fields = '__all__'
+
+
+class UploadArt(ModelForm):
+    """upload art form for uploading art as admin """
+    class Meta:
+        """creates all fields for UploadArt """
+        model = AddArt
+        fields = '__all__'
