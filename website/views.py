@@ -42,3 +42,22 @@ class AddCommentView(CreateView):
     template_name = 'add_comment.html'
     fields = ('name', 'body')
     success_url = '/add_comment_success/'
+
+    def form_valid(self, form, **kwargs):
+        form.instance.author = self.request.user
+        post = AddArt.objects.get(pk=self.kwargs['pk'])
+        form.instance.post = post
+        return super().form_valid(form)
+
+
+def add_comment_success(request):
+    """renders add comment success page to add_comment_success.html """
+    return render(request, 'add_comment_success.html')
+
+
+class UpdateCommentView(UpdateView):
+    """creates the UpdateCommentView view on gallery.html"""
+    model = Comment
+    template_name = 'update_comment.html'
+    fields = ('name', 'body')
+    success_url = '/gallery/'
