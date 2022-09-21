@@ -1,4 +1,5 @@
 import pprint
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.core.mail import send_mail, BadHeaderError
@@ -55,20 +56,28 @@ def add_comment_success(request):
     return render(request, 'add_comment_success.html')
 
 
-class UpdateCommentView(UpdateView):
+class UpdateCommentView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """creates the UpdateCommentView view on gallery.html"""
     model = Comment
     template_name = 'update_comment.html'
     fields = ('name', 'body')
     success_url = '/gallery/'
 
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
-class DeleteCommentView(DeleteView):
+
+class DeleteCommentView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """creates the DeleteCommentView view on gallery.html"""
     model = Comment
     template_name = 'delete_comment.html'
     fields = ('name', 'body')
     success_url = ('/gallery/')
+
+    def test_func(self):
+        obj = self.get_object()
+        return obj.author == self.request.user
 
 
 def commission_view(request):
