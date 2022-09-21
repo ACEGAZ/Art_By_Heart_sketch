@@ -4,8 +4,10 @@ from django.http import HttpRequest
 from django.contrib.auth.models import User
 from .views import (AddCommentView, UpdateCommentView,
                     DeleteCommentView, index, display_artwork, commission_view)
-from .forms import UploadArt, RegularCommissionForm, ReferenceSheetForm, CustomForm
-
+from .forms import (UploadArt, RegularCommissionForm, ReferenceSheetForm,
+                    CustomForm)
+from .models import (AddArt, RegularCommission, ReferenceSheetCommission,
+                     CustomCommissions, Comment)
 # Create your tests here.
 
 
@@ -133,4 +135,27 @@ class TestForms(TestCase):
         form = CustomForm(request.POST)
         form.save()
 
-# class TestModels(TestCase):
+
+class TestModels(TestCase):
+
+    def test_add_art_str(self):
+        title = AddArt.objects.create(title='test title')
+        self.assertAlmostEqual(str(title), 'test title')
+
+    def test_regular_commission_str(self):
+        email = RegularCommission.objects.create(email='test@gmail.com')
+        self.assertAlmostEqual(str(email), 'test@gmail.com')
+
+    def test_reference_sheet_commission_str(self):
+        email = ReferenceSheetCommission.objects.create(email='test@gmail.com')
+        self.assertAlmostEqual(str(email), 'test@gmail.com')
+
+    def test_custom_commissions_str(self):
+        email = CustomCommissions.objects.create(email='test@gmail.com')
+        self.assertAlmostEqual(str(email), 'test@gmail.com')
+
+    def test_comment_str(self):
+        author = Comment.objects.create.User(author='john')
+        name = Comment.objects.create(name='test name of post')
+        body = Comment.objects.create(body='test body text')
+        self.assertAlmostEqual(str(name, body), 'john', 'test body text')
