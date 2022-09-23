@@ -2,51 +2,47 @@ from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.http import HttpRequest
 from django.contrib.auth.models import User
-from .views import (AddCommentView, UpdateCommentView, upload_art_view,
-                    DeleteCommentView, index, display_artwork, commission_view,
+from .views import (upload_art_view, index, display_artwork, commission_view,
                     add_comment_success)
 from .forms import (UploadArt, RegularCommissionForm, ReferenceSheetForm,
                     CustomForm)
 from .models import (AddArt, RegularCommission, ReferenceSheetCommission,
-                     CustomCommissions, Comment)
+                     CustomCommissions)
 # Create your tests here.
 
 
 class TestUrls(TestCase):
+    """tests index, gallery and commissions urls"""
 
     def test_index_is_resolved(self):
+        """tests index url"""
         url = reverse('index')
         self.assertEqual(resolve(url).func, index)
 
     def test_gallery_is_resolved(self):
+        """tests gallery url"""
         url = reverse('gallery')
         self.assertEqual(resolve(url).func, display_artwork)
 
     def test_commissions_is_resolved(self):
+        """tests commissions url"""
         url = reverse('commissions')
         self.assertEqual(resolve(url).func, commission_view)
 
-    # def test_add_comment_is_resolved(self):
-    #     url = reverse('add_comment', args=['comment1'])
-    #     self.assertEqual(resolve(url).func.view_class, AddCommentView)
-
-    # def test_update_comment_is_resolved(self):
-    #     url = reverse('update_comment')
-    #     self.assertEqual(resolve(url).func.view_class, UpdateCommentView)
-
-    # def test_delete_comment_is_resolved(self):
-    #     url = reverse('delete_comment')
-    #     self.assertEqual(resolve(url).func.view_class, DeleteCommentView)
-
 
 class TestForms(TestCase):
+    """tests that upload art, regular commissions,
+    reference sheet, commissions and customs forms fields exists
+    and work when filled in """
 
     def test_empty_upload_art_form(self):
+        """tests upload art fields exist """
         form = UploadArt()
         self.assertIn("title", form.fields)
         self.assertIn("featured_image", form.fields)
 
     def test_filled_upload_art_form(self):
+        """tests upload art posts when filled in """
         request = HttpRequest()
         request.POST = {
             "title": 'a title',
@@ -57,6 +53,7 @@ class TestForms(TestCase):
         form.save()
 
     def test_empty_regular_commission_form(self):
+        """tests regular commissions fields exist """
         form = RegularCommissionForm()
         self.assertIn('character_reference', form.fields)
         self.assertIn('character_owner', form.fields)
@@ -68,7 +65,7 @@ class TestForms(TestCase):
         self.assertIn('email', form.fields)
 
     def test_filled_regular_commission_form(self):
-
+        """tests regular commissions posts when filled in """
         request = HttpRequest()
         request.POST = {
             "character_reference": 'a character title',
@@ -85,6 +82,7 @@ class TestForms(TestCase):
         form.save()
 
     def test_empty_reference_sheet_form(self):
+        """tests reference sheet fields exist """
         form = ReferenceSheetForm()
         self.assertIn('character_reference', form.fields)
         self.assertIn('character_owner', form.fields)
@@ -94,7 +92,7 @@ class TestForms(TestCase):
         self.assertIn('email', form.fields)
 
     def test_filled_reference_sheet_form(self):
-
+        """tests reference sheet posts when filled in """
         request = HttpRequest()
         request.POST = {
             "character_reference": 'a character title',
@@ -109,6 +107,7 @@ class TestForms(TestCase):
         form.save()
 
     def test_empty_custom_form(self):
+        """tests custom fields exist """
         form = CustomForm()
         self.assertIn('theme', form.fields)
         self.assertIn('colours', form.fields)
@@ -120,7 +119,7 @@ class TestForms(TestCase):
         self.assertIn('email', form.fields)
 
     def test_filled_custom_form(self):
-
+        """tests custom posts when filled in """
         request = HttpRequest()
         request.POST = {
             "theme": 'a character theme',
@@ -138,82 +137,79 @@ class TestForms(TestCase):
 
 
 class TestModels(TestCase):
+    """tests that add art, regular commissions, reference sheet
+    and custom commissions models returns a string"""
 
     def test_add_art_str(self):
+        """tests that add art returns a string"""
         title = AddArt.objects.create(title='test title')
         self.assertAlmostEqual(str(title), 'test title')
 
     def test_regular_commission_str(self):
+        """tests that regular commission returns a string"""
         email = RegularCommission.objects.create(email='test@gmail.com')
         self.assertAlmostEqual(str(email), 'test@gmail.com')
 
     def test_reference_sheet_commission_str(self):
+        """tests reference sheet comission returns a string"""
         email = ReferenceSheetCommission.objects.create(email='test@gmail.com')
         self.assertAlmostEqual(str(email), 'test@gmail.com')
 
     def test_custom_commissions_str(self):
+        """tests that custom commissions returns a string"""
         email = CustomCommissions.objects.create(email='test@gmail.com')
         self.assertAlmostEqual(str(email), 'test@gmail.com')
 
-    # def test_comment_str(self):
-    #     author = User.objects(author='testuser')[0]
-    #     name = Comment.objects.create(name='test name of post')
-    #     body = Comment.objects.create(body='test body text')
-    #     self.assertAlmostEqual(str(author, name, body), 'testuser', 'test name of post', 'test body text')
-
 
 class TestViews(TestCase):
+    """tests that index, upload art, display artwork,
+    add comment success, and commission
+    views return a 200 respons on the correct template"""
 
-    def test_index_GET(self):
+    def setUp(self):
+        self.client = Client()
+        self.user = User.objects.create_user(
+            username='jacob', email='soos@i.com', password='vvggtt')
+
+    def test_index_get(self):
+        """tests that index views return a 200 respons
+        on the correct template"""
         client = Client()
         response = client.get(reverse(index))
 
         self.assertAlmostEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
 
-    def test_upload_art_GET(self):
+    def test_upload_art_get(self):
+        """tests that upload art views return a 200 respons
+        on the correct template"""
         client = Client()
         response = client.get(reverse(upload_art_view))
 
         self.assertAlmostEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'admin_upload_art.html')
 
-    def test_display_artwork_GET(self):
+    def test_display_artwork_get(self):
+        """tests that display artwork views return a 200 respons
+        on the correct template"""
         client = Client()
         response = client.get(reverse(display_artwork))
 
         self.assertAlmostEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'gallery.html')
 
-    # def test_add_comment_view_GET(self):
-    #     client = Client()
-    #     response = client.get(reverse(AddCommentView))
-
-    #     self.assertAlmostEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'add_comment.html')
-
-    def test_add_comment_success_GET(self):
+    def test_add_comment_success_get(self):
+        """tests that add comments success views return a 200 respons
+        on the correct template"""
         client = Client()
         response = client.get(reverse(add_comment_success))
 
         self.assertAlmostEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'add_comment_success.html')
 
-    # def test_update_comment_view_GET(self):
-    #     client = Client()
-    #     response = client.get(reverse(UpdateCommentView))
-
-    #     self.assertAlmostEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'update_comment.html')
-
-    # def delete_comment_view_GET(self):
-    #     client = Client()
-    #     response = client.get(reverse(DeleteCommentView))
-
-    #     self.assertAlmostEqual(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'delete_comment.html')
-
-    def test_commission_view_GET(self):
+    def test_commission_view_get(self):
+        """tests that commission views return a 200 respons
+        on the correct template"""
         client = Client()
         response = client.get(reverse(commission_view))
 

@@ -4,8 +4,6 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
-STATUS = ((0, "Draft"), 1, "Published")
-
 
 class AddArt(models.Model):
     """add artwork to website """
@@ -67,8 +65,10 @@ class Comment(models.Model):
     name = models.CharField(max_length=255)
     body = models.TextField()
     date_added = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0),
-    ordering = ["created_on"]
+
+    class Meta:
+        """orders comments by date added"""
+        ordering = ["-date_added"]
 
     def __str__(self):
         return f"Comment {self.name} {self.body}"
