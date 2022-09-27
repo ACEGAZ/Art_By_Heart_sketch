@@ -16,9 +16,9 @@ I decided to build this website for my sister who sells her artwork through Inst
 3. [Development](#development)
 4. [Deployment](#deployment)
 5. [Tests](#tests)
-6. [Validators](#Validators)
-7. [Features](#features)
-8. [Bugs & Solutions](#bugs-&-solutions)
+6. [Validators](#validators)
+7. [Bugs & Solutions](#bugs-&-solutions)
+8. [Updates](#updates)
 9. [Credits](#credits)
 
 
@@ -61,6 +61,7 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
 - Gallery <a name="gallery"></a>
 
     The gallery page displayes any art that the admin/artist uploads and allows users to comment on the indivisual pieces.
+    Any artwork uploaded via the upload artwork link will appear on this page.
 
     <img src = 'static/images/gallery.png'>
     <img src = 'static/images/gallery-2.png'>
@@ -70,6 +71,9 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
 - Commissions <a name="commissions"></a>
 
     The commissions page contains three forms (normal commissions, reference sheets and customs) that can be filled in by the user. Once a form is filled in and submited an email is sent to the artist that contains all the relevant information the artists needs to contact the user and begin drawing a commission. 
+
+    One of the three forms can be filled in and then submitted. Once submitted an email will be sent to huemann49@gmail.com and 
+    all information will be easily understandable.  
 
     <img src = 'static/images/commissions-page-1.png'>
     <img src = 'static/images/commissions-page-2.png'>
@@ -109,7 +113,14 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
 
 ## Development <a name="development"></a>
 
-  The Art By Heart Sketch website was developed with the agile method. A Kanban board was used with user stories added to it, each detailing a different function of     the website. All User stories were completed in 1 iteration. All phases of Agile development can be seen in the images below.
+  The Art By Heart Sketch website was developed with the agile method. A Kanban board was used with user stories added to it, each detailing a different function of the website. All User stories were completed in 1 iteration. All phases of Agile development can be seen in the images below.
+
+  <img src = 'static/images/agile-development-1.png'>
+  <img src = 'static/images/agile-development-2.png'>
+  <img src = 'static/images/agile-development-3.png'>
+  <img src = 'static/images/agile-development-4.png'>
+  <img src = 'static/images/agile-development-5.png'>
+  <img src = 'static/images/agile-development-6.png'>
 
 ## Deployment <a name="deployment"></a>
   
@@ -450,7 +461,7 @@ Description:
 
   All information filled in on custom form appears in email inbox.
 
-## Validators <a name="Validators"></a>
+## Validators <a name="validators"></a>
 
 Art by heart sketch has been run through Lighthouse, W3C CSS validator, W3C HTML validator and pep8 Python validator.
 
@@ -481,8 +492,25 @@ All warnings are caused by Bootstraps and can be ignored.
 <img src = 'static/images/WC3 HTML validator.png'>
 
 
-## Features <a name="features"></a> 
-
 ## Bugs & Solutions <a name="bugs-&-solutions"></a> 
 
+During this project I only encountered one major bug. Whenever artwork is uploaded from the local environment to cloudinary
+a timestamp error occurs. I believe this is due to Gitpods time being an hour behind, as when I comment in local on a piece of artwork the comment time stamp is also exactly one hour behind. 
+
+This only happens in the local environment and all functions work completely fine when running on Heroku.  
+
+Unfortunately, I was unable ti fix this error.
+
+<img src = 'static/images/timestamp error.png'>
+
+## Updates <a name="updates"></a>
+
+In the future I would like to include a secure payment method for art to be directly purchased from the website.
+
+I would also like to add a system for comments to be authorised by an admin before being posted but I Unfortunately ran out of time for this project. 
+
 ## Credits <a name="credits"></a>
+
+Special thanks to Daisy McGirr for mentoring me throughout this project.
+
+Thanks to Codemy videos for a easy to follow tutorial which you can find here : https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi
