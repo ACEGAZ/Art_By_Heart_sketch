@@ -30,9 +30,27 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
     The website can be navigated via the horizontal top nav-bar which displayes the Home, Gallery, commissions, sign up and log in links. if the User is logged in then     the sign in link is removed from the nav-bar and log out is displayed. also, the Users name they used when signing up will be displayed.
     when the website is displayed on a mobile device the nav-bar will become a burger symbol which expands to reveal all links, that are now displayed vertically. 
 
+    <img src = 'static/images/Navbar.png'>
+
 - Landing Page <a name="landing-page"></a>
 
     The landing page is a read only page that demostrates what the user will get and the prices that the artist will charge. 
+
+    <img src = 'static/images/landing-page.png'>
+    <img src = 'static/images/landing-page-2.png'>
+    <img src = 'static/images/landing-page-3.png'>
+    <img src = 'static/images/landing-page-4.png'>
+    <img src = 'static/images/landing-page-5.png'>
+    <img src = 'static/images/landing-page-6.png'>
+    <img src = 'static/images/landing-page-7.png'>
+    <img src = 'static/images/landing-page-8.png'>
+    <img src = 'static/images/landing-page-9.png'>
+    <img src = 'static/images/landing-page-10.png'>
+    <img src = 'static/images/landing-page-11.png'>
+    <img src = 'static/images/landing-page-12.png'>
+    <img src = 'static/images/landing-page-13.png'>
+    <img src = 'static/images/landing-page-14.png'>
+    <img src = 'static/images/landing-page-15.png'>
 
 - Gallery <a name="gallery"></a>
 
@@ -437,6 +455,13 @@ This validator throws a Java lang error but unfortunatly I could not find the ca
 The White space warnings have been fixed. 
 
 All warnings are caused by Bootstraps and can be ignored.
+
+<hr>
+
+### WC3 HTML
+
+<img src = 'static/images/WC3 HTML validator.png'>
+
 
 ## Features <a name="features"></a> 
 
