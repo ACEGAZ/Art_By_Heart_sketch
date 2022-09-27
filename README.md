@@ -25,12 +25,16 @@ I decided to build this website for my sister who sells her artwork through Inst
 ## Project Description <a name="project-description"></a>
 Art By Heart Sketch is desigend to give the user an example of what kinds of art they can commission from the artist and easily send the artist an email to commission the type of drawing they want. The website uses Python, Django Full Stack Framework, Bootstraps and Cloudinary for static files and image storage.  
 
+<hr>
+
 - Navigation <a name="navigation"></a>
 
     The website can be navigated via the horizontal top nav-bar which displayes the Home, Gallery, commissions, sign up and log in links. if the User is logged in then     the sign in link is removed from the nav-bar and log out is displayed. also, the Users name they used when signing up will be displayed.
     when the website is displayed on a mobile device the nav-bar will become a burger symbol which expands to reveal all links, that are now displayed vertically. 
 
     <img src = 'static/images/Navbar.png'>
+
+<hr>
 
 - Landing Page <a name="landing-page"></a>
 
@@ -52,13 +56,27 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
     <img src = 'static/images/landing-page-14.png'>
     <img src = 'static/images/landing-page-15.png'>
 
+    <hr>
+
 - Gallery <a name="gallery"></a>
 
     The gallery page displayes any art that the admin/artist uploads and allows users to comment on the indivisual pieces.
 
+    <img src = 'static/images/gallery.png'>
+    <img src = 'static/images/gallery-2.png'>
+
+    <hr>
+
 - Commissions <a name="commissions"></a>
 
-    The commissions page contains three forms (normal commissions, reference sheets and customs) that can be filled in by the user. Once a form is filled in and            submited an email is sent to the artist that contains all the relevant information the artists needs to contact the user and begin drawing a commission. 
+    The commissions page contains three forms (normal commissions, reference sheets and customs) that can be filled in by the user. Once a form is filled in and submited an email is sent to the artist that contains all the relevant information the artists needs to contact the user and begin drawing a commission. 
+
+    <img src = 'static/images/commissions-page-1.png'>
+    <img src = 'static/images/commissions-page-2.png'>
+    <img src = 'static/images/commissions-page-3.png'>
+    <img src = 'static/images/commissions-page-4.png'>
+    <img src = 'static/images/commissions-page-5.png'>
+    <img src = 'static/images/commissions-page-6.png'>
 
 ## Technologies Used <a name="technologies-used"></a>
   For this project the main technologies used were Python, Django, Bootstraps and Cloudinary. 
@@ -442,7 +460,7 @@ All results can be seen below:
 
 ### Lighthouse
 
-<img src = 'static/images/Lighthouse test.png'>
+<img src = 'static/images/lighthouse-test.png'>
 
 <hr>
 
