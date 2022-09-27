@@ -1,6 +1,6 @@
 /* body font */
 body {
-    font-family: 'Old Standard TT', sans serif;
+    font-family: 'Old Standard TT', 'sans serif';
     text-align: center;
     font-size: 16px;
 }
@@ -66,7 +66,7 @@ input[type=submit] {
     font-size: 20px;
 }
 
-/* index border styles */
+/* border styles */
 .pink-border {
     border: 25px solid;
     border-image: linear-gradient(rgb(246, 232, 243), rgb(246, 214, 242)) 1;
@@ -104,12 +104,13 @@ input[type=submit] {
 
 /* index images styles */
 
-#chibi-headtshot-image-1, #chibi-headtshot-image-2, #chibi-fullbody-image-1, #chibi-fullbody-image-2 {
+#chibi-headtshot-image-1, #chibi-headshot-image-2, #chibi-fullbody-image-1, #chibi-fullbody-image-2 {
     border-radius: 0%;
     object-fit: contain;
     height: 60%;
     width: 60%;
-    padding-bottom: 30px;
+    margin-top: 30px;
+    margin-bottom: 100px;
 }
 
 #normal-headshot-1, #halfbody-1, #fullbody-1, #sketch-page-1 {

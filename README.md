@@ -16,9 +16,10 @@ I decided to build this website for my sister who sells her artwork through Inst
 3. [Development](#development)
 4. [Deployment](#deployment)
 5. [Tests](#tests)
-6. [Features](#features)
-7. [Bugs & Solutions](#bugs-&-solutions)
-8. [Credits](#credits)
+6. [Validators](#Validators)
+7. [Features](#features)
+8. [Bugs & Solutions](#bugs-&-solutions)
+9. [Credits](#credits)
 
 
 ## Project Description <a name="project-description"></a>
@@ -412,6 +413,30 @@ Description:
   Actual:
 
   All information filled in on custom form appears in email inbox.
+
+## Validators <a name="Validators"></a>
+
+Art by heart sketch has been run through Lighthouse, W3C CSS validator, W3C HTML validator and pep8 Python validator.
+
+All results can be seen below:
+
+<hr>
+
+### Lighthouse
+
+<img src = 'static/images/Lighthouse test.png'>
+
+<hr>
+
+### WC3 CSS
+
+<img src = 'static/images/WC3 CSS validator.png'>
+
+This validator throws a Java lang error but unfortunatly I could not find the cause of this error.
+
+The White space warnings have been fixed. 
+
+All warnings are caused by Bootstraps and can be ignored.
 
 ## Features <a name="features"></a> 
 
