@@ -1,3 +1,5 @@
+"""imports from mixins, shortcuts,
+generic, mail, http, forms and models """
 import pprint
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.shortcuts import render

@@ -12,6 +12,7 @@ I decided to build this website for my sister who sells her artwork through Inst
     2. [Landing Page](#landing-page)
     3. [Gallery](#gallery)
     4. [Commissions](#commissions)
+    5. [Responsive Design](#responsive-design)
 2. [Technologies Used](#technologies-used)
 3. [Development](#development)
 4. [Deployment](#deployment)
@@ -56,7 +57,7 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
     <img src = 'static/images/landing-page-14.png'>
     <img src = 'static/images/landing-page-15.png'>
 
-    <hr>
+<hr>
 
 - Gallery <a name="gallery"></a>
 
@@ -66,7 +67,7 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
     <img src = 'static/images/gallery.png'>
     <img src = 'static/images/gallery-2.png'>
 
-    <hr>
+<hr>
 
 - Commissions <a name="commissions"></a>
 
@@ -81,6 +82,29 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
     <img src = 'static/images/commissions-page-4.png'>
     <img src = 'static/images/commissions-page-5.png'>
     <img src = 'static/images/commissions-page-6.png'>
+
+<hr>
+
+- Responsive Design <a name="responsive-design"></a>
+
+    The website responds to large, medium and small screen sizes by shrinking the navbar to a burger button and displaying the 
+    comment section in a single column. All elements are sized accordingly using bootstraps containers, rows and column. 
+
+    Below are images of the responsive design as Heroku will not allow the app to connect to a "am I responsive website."
+
+    <p float="left">
+  <img src="static/images/responsive-design-1.png" width="300" />
+  <img src="static/images/responsive-design-2.png" width="300" /> 
+  <img src="static/images/responsive-design-3.png" width="300" />
+  <img src="static/images/responsive-design-4.png" width="300" />
+  <img src="static/images/responsive-design-5.png" width="300" />
+  <img src="static/images/responsive-design-6.png" width="300" />
+  <img src="static/images/responsive-design-7.png" width="300" />
+  <img src="static/images/responsive-design-8.png" width="300" />
+  <img src="static/images/responsive-design-9.png" width="300" />
+</p>
+
+<hr>
 
 ## Technologies Used <a name="technologies-used"></a>
   For this project the main technologies used were Python, Django, Bootstraps and Cloudinary. 
@@ -104,12 +128,16 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
   - oauthlib==3.2.0
   - psycopg2==2.9.3
   - PyJWT==2.4.0
+  - pylint-django==2.5.3
+  - pylint-plugin-utils==0.7
   - python3-openid==3.2.0
   - pytz==2022.1
   - requests-oauthlib==1.3.1
   - s3transfer==0.6.0
   - sqlparse==0.4.2
   - whitenoise==6.2.0
+
+<hr>
 
 ## Development <a name="development"></a>
 
@@ -121,6 +149,8 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
   <img src = 'static/images/agile-development-4.png'>
   <img src = 'static/images/agile-development-5.png'>
   <img src = 'static/images/agile-development-6.png'>
+
+<hr>
 
 ## Deployment <a name="deployment"></a>
   
@@ -134,6 +164,8 @@ Art By Heart Sketch is desigend to give the user an example of what kinds of art
   6.  I allowed automatic commits so that Heroku would always have the current version of my app 
   7.  I set up the config vars on the setting tab
   8.  Then I successfully deployed my app using the deploy branch button. 
+
+<hr>
 
 ## Tests <a name="tests"></a>
 
@@ -461,6 +493,8 @@ Description:
 
   All information filled in on custom form appears in email inbox.
 
+<hr>
+
 ## Validators <a name="validators"></a>
 
 Art by heart sketch has been run through Lighthouse, W3C CSS validator, W3C HTML validator and pep8 Python validator.
@@ -483,13 +517,32 @@ This validator throws a Java lang error but unfortunatly I could not find the ca
 
 The White space warnings have been fixed. 
 
-All warnings are caused by Bootstraps and can be ignored.
+All other warnings are caused by Bootstraps and can be ignored.
 
 <hr>
 
 ### WC3 HTML
 
 <img src = 'static/images/WC3 HTML validator.png'>
+
+<hr>
+
+### PEP8
+
+Art by heart sketch was going to be tested with pep8 compliance using pep8 online (http://pep8online.com/) but this website no longer exists. The app was instead tested using gitpods built in pep8 module. 
+
+There are a few issues I couldn't fix but these are because of the Pylint not understanding Django. I tried to fix the issues using django-pylint but I clould not get it to work. 
+
+I have supplied images of the remaining issues below. 
+
+<p float="left">
+  <img src="static/images/pep8-test-1.png" width="300" />
+  <img src="static/images/pep8-test-2.png" width="300" /> 
+  <img src="static/images/pep8-test-3.png" width="300" />
+  <img src="static/images/pep8-test-4.png" width="300" />
+  <img src="static/images/pep8-test-5.png" width="300" />
+</p>
+
 
 
 ## Bugs & Solutions <a name="bugs-&-solutions"></a> 
@@ -503,14 +556,19 @@ Unfortunately, I was unable ti fix this error.
 
 <img src = 'static/images/timestamp error.png'>
 
+<hr>
+
 ## Updates <a name="updates"></a>
 
 In the future I would like to include a secure payment method for art to be directly purchased from the website.
 
 I would also like to add a system for comments to be authorised by an admin before being posted but I Unfortunately ran out of time for this project. 
 
+<hr>
+
 ## Credits <a name="credits"></a>
 
 Special thanks to Daisy McGirr for mentoring me throughout this project.
+and Emily Melham who owns all the artwork used in this project.
 
-Thanks to Codemy videos for a easy to follow tutorial which you can find here : https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi
+Thanks to Codemy videos for a easy to follow tutorial which you can find here: https://www.youtube.com/watch?v=B40bteAMM_M&list=PLCC34OHNcOtr025c1kHSPrnP18YPB-NFi

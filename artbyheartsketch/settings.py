@@ -31,7 +31,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 development = os.environ.get('DEVELOPMENT', False)
 DEBUG = development
 
-ALLOWED_HOSTS = ['localhost', 'art-by-heart-sketch.herokuapp.com', 'localhost', '8080-acegaz-artbyheartsketch-bpt70128mnm.ws-eu53.gitpod.io', '8000-acegaz-artbyheartsketch-bpt70128mnm.ws-eu53.gitpod.io']
+ALLOWED_HOSTS = ['localhost', 'art-by-heart-sketch.herokuapp.com',
+                 'localhost',
+                 '8080-acegaz-artbyheartsketch-bpt70128mnm.ws-eu53.gitpod.io',
+                 '8000-acegaz-artbyheartsketch-bpt70128mnm.ws-eu53.gitpod.io']
 
 
 # Application definition
@@ -118,16 +121,20 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+                .UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+                .MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+                .CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation\
+                .NumericPasswordValidator',
     },
 ]
 

@@ -1,3 +1,5 @@
+"""imprts from test, urls, http, user,
+views, forms and models """
 from django.test import TestCase, Client
 from django.urls import reverse, resolve
 from django.http import HttpRequest
