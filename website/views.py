@@ -1,8 +1,9 @@
 """imports from mixins, shortcuts,
 generic, mail, http, forms and models """
 import pprint
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import CreateView, UpdateView, DeleteView
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
@@ -16,10 +17,14 @@ def index(request):
     return render(request, 'index.html')
 
 
+@login_required
 def upload_art_view(request):
     """renders upload_art_view page to gallery.html
     and upload art form
     """
+    if not request.user.is_superuser:
+        return redirect(reverse('index'))
+
     if request.method == 'POST':
         upload_art_form = UploadArt(request.POST, request.FILES)
         if upload_art_form.is_valid():
@@ -39,7 +44,7 @@ def display_artwork(request):
     return render(request, 'gallery.html', context)
 
 
-class AddCommentView(CreateView):
+class AddCommentView(LoginRequiredMixin, CreateView):
     """creates the AddCommentView view on gallery.html"""
     model = Comment
     template_name = 'add_comment.html'
@@ -53,6 +58,7 @@ class AddCommentView(CreateView):
         return super().form_valid(form)
 
 
+@login_required
 def add_comment_success(request):
     """renders add comment success page to add_comment_success.html """
     return render(request, 'add_comment_success.html')
